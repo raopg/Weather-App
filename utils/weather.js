@@ -8,9 +8,9 @@ const weather = (latitude, longitude, callback)=>{
         } else if(body.error){
             callback("Weather API error occurred: " + body.error, undefined)
         } else{
-            const dailyInfo = body.daily.data[0].summary
+            const dailyInfo = body.daily.data[0]
             const currentInfo = body.currently
-            callback(undefined,dailyInfo + " It is currently "+ currentInfo.temperature +" degrees outside. There is a " + currentInfo.precipProbability + "% chance of rain.")
+            callback(undefined,dailyInfo.summary + " It is currently "+ currentInfo.temperature +" degrees outside. The high today is " + dailyInfo.temperatureHigh+ ". The low today is "+dailyInfo.temperatureLow +". There is a " + currentInfo.precipProbability + "% chance of rain.")
         }
     })
 }
